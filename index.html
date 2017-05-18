@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="js/wall.js"></script>
+
+</head>
+<body onload="main()">
+    <canvas id="myCanvas" width="800" height="800" style="border:1px solid #000000;"></canvas>
+    <div id='menu'>
+        <input type="text" value="Enter your name" id="name" style="width: 150px;"
+            onkeydown = 'if (event.keyCode == 13) document.getElementById("input_button").click()'
+         />
+        <input type='button' id='input_button' onclick="draw()"/>
+    </div>
+    <select id="selecth1FontFamily" name="selectFontFamily" onchange="updateh1family();">
+        <option> Serif </option>
+        <option> Arial </option>
+        <option> Sans-Serif </option>                                  
+        <option> Tahoma </option>
+        <option> Verdana </option>
+        <option> Lucida Sans Unicode </option>                               
+    </select>
+
+
+</body>
+</html>
+
