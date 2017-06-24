@@ -2,34 +2,32 @@
 function main(){
     var canvas = document.getElementById('myCanvas');
     // var canvas = this.canvas;
+    var c = canvas.getContext('2d'); 
+    var square = {
+    	x : canvas.width / 2,
+    	y : canvas.height / 2,
+    	width : 20,
+    	height : 20
+    };
+    canvas.addEventListener('mousemove', function(e) {move(e, square)}, false);
+}
+
+function redraw(square){
+	var canvas = document.getElementById('myCanvas');
     var c = canvas.getContext('2d');
-    var base_image = new Image();
-    base_image.src = 'photos/wall.jpeg';
-    base_image.onload = function(){
-        c.drawImage(base_image, 0,0);
-    }
-    canvas.addEventListener('mousemove', function(e) { drawBorder(e);}, false);
-    canvas.addEventListener("click", function(e) { loop(e);}, false);
-   
+	c.beginPath();
+	c.clearRect(0, 0, canvas.width, canvas.height);
+	c.strokeStyle = "rgba(0,255,0,255)";
+	c.stroke();
+	c.rect(square.x, square.y, square.width, square.height);
+	c.stroke();
+	c.closePath();
 }
 
-function drawBorder(e){
-    var canvas = document.getElementById('myCanvas');
-    var context = canvas.getContext("2d");
-    var currX = e.offsetX;
-    var currY = e.offsetY;
-    context.rect(e.offsetX, e.offsetY, 20, 20);
-    context.stroke();
-    context.clearRect(e.offsetX, e.offsetY, 20, 20);
-
+function move(e, square){
+	square.x = e.clientX - square.width;
+	square.y = e.clientY - square.height;
+	redraw(square);
 }
 
-
-function loop(e){
-    var canvas = document.getElementById('myCanvas');
-    var context = canvas.getContext("2d");
-    var text = document.getElementById('name').value;
-    context.font =  "30px Arial";
-    context.fillText(text, e.offsetX, e.offsetY);
-}
 
