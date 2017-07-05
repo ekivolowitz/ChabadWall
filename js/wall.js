@@ -24,19 +24,13 @@ function main(){
 		// c.resetTransform();
 		c.clearRect(0, 0, canvas.width, canvas.height);
 		if(latest != undefined){
-			// c.translate(latest.x, latest.y);
-			// c.rotate(rotate * Math.PI/180)
 			c.fillText(latest.t, latest.x, latest.y);
 		}
 		c.beginPath();
 		c.strokeStyle = "rgba(0,255,0,255)";
-		// c.stroke();
-		// c.translate(e.offsetX, e.offsetY);
-		// c.rotate(rotate * Math.PI/180)
 		c.rect(square.x, square.y, square.width, square.height);
 		c.stroke();
 		c.closePath();
-		// c.resetTransform();
 	}
 
 	/**
@@ -46,7 +40,7 @@ function main(){
 	 */
 	var move = function(e){
 		square.x = e.clientX - 8;
-		square.y = e.clientY - 30;
+		square.y = e.clientY - square.height * 1.5;
 		redraw(e, square);
 	}
 
@@ -64,10 +58,7 @@ function main(){
 	 		y : e.offsetY,
 	 		t : text
 	 	}
-	 	// c.translate(e.offsetX, e.offsetY);
-	 	// c.rotate(Math.Pi / 2);
 	 	c.fillText(latest.t, latest.x, latest.y);
-	 	// c.resetTransform();
 	}
 }
 
