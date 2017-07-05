@@ -1,3 +1,7 @@
-canvas { background:url("../photos/wall.jpeg");}
+canvas { 
+    background:url("../photos/wall.jpeg");
+    width : 800px;
+    height : 800px;
+}
 
 

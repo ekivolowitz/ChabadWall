@@ -4,6 +4,7 @@ function main(){
     var c = canvas.getContext('2d'); 
     var latest; // defined in drawName
     var rotate = 0;
+	var scrolledAmount = 0;
     var square = {
     	x : canvas.width / 2,
     	y : canvas.height / 2,
@@ -12,7 +13,9 @@ function main(){
     };
     canvas.addEventListener('mousemove', function(e) {move(e, square)}, false);
     canvas.addEventListener("click", function(e) { drawName(e);}, false);
-
+	window.addEventListener('scroll', function(e) {
+		scrolledAmount = window.scrollY;
+	;}, false);
     // Begin helper functions. 
 
     /**
@@ -40,7 +43,7 @@ function main(){
 	 */
 	var move = function(e){
 		square.x = e.clientX - 8;
-		square.y = e.clientY - square.height * 1.5;
+		square.y = e.clientY - square.height * 1.5 + scrolledAmount;
 		redraw(e, square);
 	}
 
