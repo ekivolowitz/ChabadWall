@@ -1,5 +1,19 @@
+function changeFont() {
+    let select = document.getElementById("font-sel");
+    select.style.fontFamily = select.options[select.selectedIndex].text;
+}
+function main() {
+    let fonts = ["Montez", "Lobster", "Josefin Sans", "Shadows Into Light", "Pacifico", "Amatic SC", "Orbitron", "Rokkitt", "Righteous", "Dancing Script", "Bangers", "Chewy", "Sigmar One", "Architects Daughter", "Abril Fatface", "Covered By Your Grace", "Kaushan Script", "Gloria Hallelujah", "Satisfy", "Lobster Two", "Comfortaa", "Cinzel", "Courgette"];
+    let select = document.getElementById("font-sel");
+    console.log(select);
+    for (let a = 0; a < fonts.length; a++) {
+        let opt = document.createElement('option');
+        opt.value = opt.innerHTML = fonts[a];
+        opt.style.fontFamily = fonts[a];
+        select.add(opt);
+    }
+    select.style.fontFamily = select.options[select.selectedIndex].text;
 
-function main(){
     var canvas = document.getElementById('myCanvas');
     var c = canvas.getContext('2d'); 
     var latest; // defined in drawName
@@ -55,7 +69,10 @@ function main(){
 	var drawName = function(e){
 		c.clearRect(0, 0, canvas.width, canvas.height);
 		var text = document.getElementById('name').value;
-	 	c.font =  "30px Arial";
+        //c.font = "30px " + select.accessKey;
+        let font = "30px " + select.options[select.selectedIndex].text;
+        c.font = font;
+        console.log(font);
 	 	latest = {
 	 		x : e.offsetX,
 	 		y : e.offsetY,
